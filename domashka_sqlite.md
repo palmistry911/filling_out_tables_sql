@@ -1,8 +1,8 @@
-Основные запросы SELECT
+# Основные запросы SELECT
 
--- Запрос 1: Вывести идентификаторы курсов (предметов).
-SELECT CourseId FROM COURSE
-#Результат запроса 1
+### Запрос 1: Вывести идентификаторы курсов (предметов).
+` SELECT CourseId FROM COURSE `
+### Результат запроса 1
 "1"
 "2"
 "3"
@@ -10,9 +10,9 @@ SELECT CourseId FROM COURSE
 "5"
 "6"
 "7"
--- Запрос 2: Вывести всю информацию о курсах (предметах).
-SELECT * FROM course
-#Результат запроса 2
+### Запрос 2: Вывести всю информацию о курсах (предметах).
+`SELECT * FROM course`
+### Результат запроса 2
 "1"	"Data storage"
 "2"	"Machine Learning"
 "3"	"Data processing and analysis"
@@ -22,22 +22,22 @@ SELECT * FROM course
 "7"	"Information retrieval"
 
 
-Запросы с условием WHERE
+# Запросы с условием WHERE
 
--- Запрос 3: Вывести идентификатор курса с названием "Machine Learning":
-SELECT CourseId FROM Course WHERE CourseTitle = 'Machine Learning'
-#Результат запроса 3
+### Запрос 3: Вывести идентификатор курса с названием "Machine Learning":
+`SELECT CourseId FROM Course WHERE CourseTitle = 'Machine Learning'`
+### Результат запроса 3
 "2"
 
 
--- Запрос 4: Вывести название курса с идентификатором 5
-SELECT CourseTitle FROM Course WHERE CourseId = 5
-#Результат запроса 4
+### Запрос 4: Вывести название курса с идентификатором 5
+` SELECT CourseTitle FROM Course WHERE CourseId = 5`
+### Результат запроса 4
 "Image processing"
 
--- Запрос 5: Вывести список мобильных телефонов (PhoneType = 'cell') из таблицы "PHONE_LIST".
-SELECT phone FROM phone_list WHERE phonetype = 'cell'
-#Результат запроса 5
+### Запрос 5: Вывести список мобильных телефонов (PhoneType = 'cell') из таблицы "PHONE_LIST".
+`SELECT phone FROM phone_list WHERE phonetype = 'cell'`
+### Результат запроса 5
 "07106667743"
 "07107534674"
 "07300678543"
@@ -59,16 +59,16 @@ SELECT phone FROM phone_list WHERE phonetype = 'cell'
 "07931676776"
 "07923756785"
 
-Агрегатные функции
+# Агрегатные функции
 
--- Запрос 6: Вывести количество отметок, которое получил студент с идентификатором (номером зачетки) 345576:
-SELECT count(Grade) FROM EXAM_RESULT WHERE StudentId = 345576
-#Результат запроса 6
+### Запрос 6: Вывести количество отметок, которое получил студент с идентификатором (номером зачетки) 345576:
+` SELECT count(Grade) FROM EXAM_RESULT WHERE StudentId = 345576`
+### Результат запроса 6
 "2"
 
--- Запрос 7: Вывести номера зачеток (идентификаторы студентов) и средние баллы, которые получили студенты за все экзамены:
-SELECT StudentId, AVG(Grade) FROM EXAM_RESULT GROUP BY StudentId
-#Результат запроса 7
+### Запрос 7: Вывести номера зачеток (идентификаторы студентов) и средние баллы, которые получили студенты за все экзамены:
+`SELECT StudentId, AVG(Grade) FROM EXAM_RESULT GROUP BY StudentId`
+### Результат запроса 7
 "345586"	"5.0000000000000000"
 "345567"	"5.0000000000000000"
 "345570"	"4.5000000000000000"
@@ -92,27 +92,27 @@ SELECT StudentId, AVG(Grade) FROM EXAM_RESULT GROUP BY StudentId
 "345585"	"2.5000000000000000"
 "345578"	"2.5000000000000000"
 
--- Запрос 8: Вывести минимальный и максимальный баллы, полученные студентами на экзаменах:
-SELECT MAX(Grade), MIN(Grade) FROM EXAM_RESULT;
-#Результат запроса 8
+### Запрос 8: Вывести минимальный и максимальный баллы, полученные студентами на экзаменах:
+`SELECT MAX(Grade), MIN(Grade) FROM EXAM_RESULT;`
+### Результат запроса 8
 max "5"
 min "2"
 
-Объединение и пересечение
--- Запрос 9: Найти пересечение идентификаторов студентов, получавших и 2, и 5. Каждый идентификатор из пересечения должен встречаться не более одного раза:
-SELECT StudentId FROM EXAM_RESULT WHERE Grade = 2
+# Объединение и пересечение
+### Запрос 9: Найти пересечение идентификаторов студентов, получавших и 2, и 5. Каждый идентификатор из пересечения должен встречаться не более одного раза:
+`SELECT StudentId FROM EXAM_RESULT WHERE Grade = 2
 INTERSECT
-SELECT StudentId FROM EXAM_RESULT WHERE Grade = 5;
-#Результат запроса 9
+SELECT StudentId FROM EXAM_RESULT WHERE Grade = 5;`
+### Результат запроса 9
 "345569"
 "345583"
 "345576"
 
--- Запрос 10: Найти объединение идентификаторов студентов, у которых есть хоть одна 2 и/или хоть одна 5. Каждый идентификатор из пересечения должен встречаться не более одного раза:
-SELECT StudentId FROM EXAM_RESULT WHERE Grade = 2
+### Запрос 10: Найти объединение идентификаторов студентов, у которых есть хоть одна 2 и/или хоть одна 5. Каждый идентификатор из пересечения должен встречаться не более одного раза:
+`SELECT StudentId FROM EXAM_RESULT WHERE Grade = 2
 INTERSECT
-SELECT StudentId FROM EXAM_RESULT WHERE Grade = 5;
-#Результат запроса 10
+SELECT StudentId FROM EXAM_RESULT WHERE Grade = 5;`
+### Результат запроса 10
 "345567"
 "345569"
 "345570"
